@@ -26,7 +26,7 @@ public class TestController {
 	
 	@RequestMapping("/test/3")
 	public String test3() {
-		return"test/test";
+		return"template/layout";
 	}
 	
 	
