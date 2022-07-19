@@ -8,6 +8,6 @@
 		<h1>메모 게시판</h1>
 	</div>
 	<div class="Login-info">
-		마론달님 안녕하세요 <a href="#">로그아웃</a>
+		서영빈님 안녕하세요 <a href="#">로그아웃</a>
 	</div>
 </div>
