@@ -26,8 +26,39 @@
 			</div>
 			
 			<%-- btn-block: 로그인 박스 영역에 버튼을 가득 채운다. --%>
-			<a class="btn btn-block btn-dark" href="/user/sign_up_view">회원가입</a>
 			<input type="submit" class="btn btn-block btn-primary" value="로그인">
+			<a class="btn btn-block btn-dark" href="/user/sign_up_view">회원가입</a>		
 		</form>
 	</div>
 </div>
+
+<script>
+$(document).ready(function(){
+	$('#loginForm').on('submit',function(e){
+		e.preventDefault();
+		
+		let loginId = $('input[name=loginId]').val().trim();
+		if(loginId.length < 1){
+			alert("아이디를 입력해주세요");
+			return false;
+		}
+		let password = $('input[name=password]').val();
+		if(password == ""){
+			alert("비밀번호를 입력해주세요");
+			return false;
+		}
+		let url = $(this).attr("action");
+		let params = $(this).serialize();
+		
+		$.post(url,params)
+		.done(function(data){
+			if(data.result == "success"){
+				//로그인이 성공하면 글 ㅜ목록으로 이동
+				location.href = "/post/post_list_view";
+			}else{
+				alert(data.errorMessage);
+			}
+		});
+	});
+});
+</script>
