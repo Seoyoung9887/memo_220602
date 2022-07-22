@@ -5,16 +5,20 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.memo.post.bo.postBO;
+
 @RequestMapping("/post")
 @RestController
 public class PostRestController {
-	
+	@Autowired
+	private postBO postBO; 	
 	@PostMapping("/create")
 	public Map<String,Object> create(
 			@RequestParam("subject")String subject,
@@ -35,9 +39,11 @@ public class PostRestController {
 		int userId = (int)userIdObject;
 		String userLoginId = (String)session.getAttribute("userLoginId");
 		    //글쓰기 db insert
- 		
+ 		  postBO.addpost(userId, userLoginId, subject, content, file);
 		
 		return result;
 	}
+	
+	
 
 }
