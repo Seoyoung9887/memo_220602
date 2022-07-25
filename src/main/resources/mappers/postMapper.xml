@@ -22,6 +22,33 @@
              ,NOW()
           )
       </insert>
+      <select id="selectPostList" resultType="com.memo.post.model.Post">
+             SELECT 
+	             `id`
+	            ,`userid`
+				,`subject`
+				,`content`
+				,`imagPath`
+				,`createdAt`
+				,`updatedAt`
+			FROM
+			     `post`
+          
+      </select>
+      <select id="selectPostById" resultType="com.memo.post.model.Post">
+            SELECT 
+	             `id`
+	            ,`userid`
+				,`subject`
+				,`content`
+				,`imagPath`
+				,`createdAt`
+				,`updatedAt`
+			FROM
+			     `post`
+			WHERE
+			    `id`=#{postId}
+      </select>
       
  
  </mapper>
