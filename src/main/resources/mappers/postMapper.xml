@@ -49,6 +49,15 @@
 			WHERE
 			    `id`=#{postId}
       </select>
+      <delete id="deletePostByPostIdAndUserId" parameterType="map">
+            DELETE 
+            FROM
+                `post`
+            WHERE
+                `id` = #{postId}
+             AND
+                 `userid` = #{userId}
+      </delete>
       
  
  </mapper>
